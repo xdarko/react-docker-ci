@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t xdarko/react-docker-ci -f Dockerfile.dev .
+
+script:
+  - docker run xdarko/react-docker-ci npm run test -- --coverage
